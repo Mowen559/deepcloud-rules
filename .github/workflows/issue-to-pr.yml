@@ -1,0 +1,142 @@
+name: Auto Convert Issue to Pull Request
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  convert-to-pr:
+    if: startsWith(github.event.issue.title, '[社区投递]')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Parse Issue and Create PR
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const { execSync } = require('child_process');
+            const issue = context.payload.issue;
+            const body = issue.body || '';
+
+            console.log(`🔍 正在解析 Issue #${issue.number}: ${issue.title}`);
+
+            // 1. 正则匹配规则元数据
+            const titleMatch = body.match(/\*\*规则名称\*\*\s*[:：]\s*(.+)/i);
+            const categoryMatch = body.match(/\*\*分类\*\*\s*[:：]\s*(.+)/i);
+            const authorMatch = body.match(/\*\*作者(?:\/贡献者)?\*\*\s*[:：]\s*(.+)/i);
+            const descMatch = body.match(/\*\*更新说明\*\*\s*[:：]\s*(.+)/i);
+
+            // 提取 JSON 正文
+            const jsonBlockMatch = body.match(/```json\s*([\s\S]*?)\s*```/i);
+            if (!jsonBlockMatch) {
+              console.log('未找到 ```json 代码块');
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: '⚠️ **自动转 PR 提示**：未能从 Issue 正文中提取到合法的 ```json ... ``` 代码块，请检查格式后重新编辑。'
+              });
+              return;
+            }
+
+            let ruleJson = null;
+            try {
+              ruleJson = JSON.parse(jsonBlockMatch[1]);
+            } catch (err) {
+              console.error('JSON 解析失败:', err.message);
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `⚠️ **JSON 格式校验未通过**：${err.message}`
+              });
+              return;
+            }
+
+            // 若包含海阔口令脱壳外层结构，提取内部 ruleData
+            let actualRule = ruleJson;
+            if (ruleJson.ruleData && typeof ruleJson.ruleData === 'object') {
+              actualRule = ruleJson.ruleData;
+            }
+
+            const ruleTitle = (titleMatch ? titleMatch[1].trim() : (actualRule.title || actualRule.name || 'custom-rule')).replace(/["']/g, '');
+            const rawCategory = (categoryMatch ? categoryMatch[1].trim().toLowerCase() : 'tool');
+            const validCategories = ['video', 'audio', 'comic', 'crawler', 'tool'];
+            const category = validCategories.includes(rawCategory) ? rawCategory : 'tool';
+            const author = (authorMatch ? authorMatch[1].trim() : (actualRule.author || issue.user.login || 'community')).replace(/["']/g, '');
+            const description = (descMatch ? descMatch[1].trim() : '社区用户贡献规则');
+
+            // 生成规范化 slug
+            const safeSlug = ruleTitle.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '') || 'rule';
+            const authorSlug = author.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '') || 'author';
+            const fullSlug = `${safeSlug}-${authorSlug}`;
+            const targetDir = path.join(process.cwd(), 'rules', category, fullSlug);
+
+            fs.mkdirSync(targetDir, { recursive: true });
+
+            // 写入 rule.json
+            const ruleFilePath = path.join(targetDir, 'rule.json');
+            fs.writeFileSync(ruleFilePath, JSON.stringify(actualRule, null, 2) + '\n', 'utf8');
+
+            // 写入 meta.json
+            const metaFilePath = path.join(targetDir, 'meta.json');
+            const metaData = {
+              title: ruleTitle,
+              author: author,
+              version: String(actualRule.version || '1.0.0'),
+              category: category,
+              description: description,
+              updatedAt: new Date().toISOString().split('T')[0],
+              contributedBy: issue.user.login,
+              issueNumber: issue.number
+            };
+            fs.writeFileSync(metaFilePath, JSON.stringify(metaData, null, 2) + '\n', 'utf8');
+
+            console.log(`✔ 已生成规则规范文件: rules/${category}/${fullSlug}/`);
+
+            // 2. 通过 Git 创建分支并提交
+            const branchName = `bot/issue-${issue.number}-${Date.now().toString().slice(-4)}`;
+
+            execSync(`git config user.name "DeepCloud Bot"`);
+            execSync(`git config user.email "bot@deepcloud.app"`);
+            execSync(`git checkout -b ${branchName}`);
+            execSync(`git add rules/${category}/${fullSlug}/`);
+            execSync(`git commit -m "feat(rules): 自动将 Issue #${issue.number} 转换为规则资产 (${ruleTitle})"`);
+            execSync(`git push origin ${branchName}`);
+
+            // 3. 创建真正的 Pull Request
+            const pr = await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `feat(rules): [社区投递] 《${ruleTitle}》 (from Issue #${issue.number})`,
+              head: branchName,
+              base: 'main',
+              body: `### 🤖 DeepCloud 自动转 PR 机器人\n\n本 Pull Request 由 Issue #${issue.number} 自动转换生成。\n\n- **规则名称**: 《${ruleTitle}》\n- **所属分类**: \`${category}\`\n- **贡献作者**: @${issue.user.login} (${author})\n- **更新说明**: ${description}\n- **关联 Issue**: Closes #${issue.number}\n\n已自动提交并交由 GitHub Actions 自动化机审流水线接管...`
+            });
+
+            console.log(`✔ 成功创建 PR #${pr.data.number}: ${pr.data.html_url}`);
+
+            // 4. 在原 Issue 留言回显 PR 链接
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              body: `🎉 **已自动为您转换为 Pull Request！**\n\n- **PR 单号**: [#${pr.data.number}](${pr.data.html_url})\n- **自动审核状态**: 自动化机审与合入流水线已在后台接管，体检 100% 通过后将自动合并至主干并全网 CDN 生效！\n\n感谢您对 DeepCloud 规则生态的开源贡献！`
+            });
