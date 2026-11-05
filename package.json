@@ -1,0 +1,18 @@
+{
+  "name": "deepcloud-rules",
+  "version": "1.0.0",
+  "description": "DeepCloud Official Community Rules & Specs Hub",
+  "private": true,
+  "scripts": {
+    "validate": "node scripts/validate-pr.cjs",
+    "build:index": "node scripts/build-index.cjs"
+  },
+  "keywords": [
+    "deepcloud",
+    "hikerview",
+    "rules",
+    "community"
+  ],
+  "author": "DeepCloud Community",
+  "license": "MIT"
+}

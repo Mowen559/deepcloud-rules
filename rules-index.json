@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "total": 4,
+  "updatedAt": "2026-11-05T03:08:29.308Z",
+  "rules": [
+    {
+      "id": "audio:kuwo-xinghuo",
+      "name": "小酷音乐",
+      "title": "小酷音乐",
+      "author": "星火",
+      "version": "3.0.4",
+      "category": "audio",
+      "description": "海阔视界 小酷音乐 规则",
+      "sourceType": "community",
+      "assetKind": "hiker_rule",
+      "ruleUrl": "https://fastly.jsdelivr.net/gh/Mowen559/deepcloud-rules@main/rules/audio/kuwo-xinghuo/rule.json",
+      "updatedAt": "2026-11-05",
+      "installStatus": "available"
+    },
+    {
+      "id": "audio:syapp-zhao",
+      "name": "声阅APP",
+      "title": "声阅APP",
+      "author": "zhao",
+      "version": "1.0.8",
+      "category": "audio",
+      "description": "海阔视界 声阅APP 规则",
+      "sourceType": "community",
+      "assetKind": "hiker_rule",
+      "ruleUrl": "https://fastly.jsdelivr.net/gh/Mowen559/deepcloud-rules@main/rules/audio/syapp-zhao/rule.json",
+      "updatedAt": "2026-11-05",
+      "installStatus": "available"
+    },
+    {
+      "id": "crawler:wechat-spider",
+      "name": "微信公众号免密文章采集器",
+      "title": "微信公众号免密文章采集器",
+      "author": "DeepCloud",
+      "version": "1.2.0",
+      "category": "crawler",
+      "description": "海阔视界 微信公众号免密文章采集器 规则",
+      "sourceType": "community",
+      "assetKind": "scraper_spec",
+      "ruleUrl": "https://fastly.jsdelivr.net/gh/Mowen559/deepcloud-rules@main/rules/crawler/wechat-spider/rule.json",
+      "updatedAt": "2026-11-05",
+      "installStatus": "available"
+    },
+    {
+      "id": "video:bilibili-mowen",
+      "name": "哔哩哔哩",
+      "title": "哔哩哔哩",
+      "author": "Mowen",
+      "version": "2.1.0",
+      "category": "video",
+      "description": "海阔视界 哔哩哔哩 规则",
+      "sourceType": "community",
+      "assetKind": "hiker_rule",
+      "ruleUrl": "https://fastly.jsdelivr.net/gh/Mowen559/deepcloud-rules@main/rules/video/bilibili-mowen/rule.json",
+      "updatedAt": "2026-11-05",
+      "installStatus": "available"
+    }
+  ]
+}

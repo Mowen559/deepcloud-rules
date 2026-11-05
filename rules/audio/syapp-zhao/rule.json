@@ -1,0 +1,12 @@
+{
+  "title": "声阅APP",
+  "author": "zhao",
+  "version": "1.0.8",
+  "url": "https://m.kuwo.cn",
+  "col_type": "movie_3",
+  "class_name": "听书小说&评书相声&儿童教育",
+  "class_url": "1&2&3",
+  "find_rule": "js:\nvar d = [];\nd.push({\n  title: '今日热播有声书',\n  col_type: 'rich_text'\n});\nsetResult(d);",
+  "search_url": "https://m.kuwo.cn/search?key=**",
+  "searchFind": "js:\nvar d = [];\nsetResult(d);"
+}

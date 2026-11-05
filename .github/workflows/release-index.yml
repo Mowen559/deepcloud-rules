@@ -1,0 +1,38 @@
+name: Build Index & Sync Distribution
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'rules/**'
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build rules-index.json
+        run: |
+          node scripts/build-index.cjs
+
+      - name: Commit & Push Updated Index
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "DeepCloud-Bot"
+          git add rules-index.json
+          git commit -m "chore(release): auto regenerate rules-index.json [skip ci]" || echo "No changes to commit"
+          git push origin main
