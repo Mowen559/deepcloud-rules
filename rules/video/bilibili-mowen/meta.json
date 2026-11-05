@@ -1,0 +1,12 @@
+{
+  "name": "哔哩哔哩 (免登4K)",
+  "category": "video",
+  "author": "Mowen",
+  "version": "2.1.0",
+  "description": "B站全站视频、番剧漫游、支持高清免登录蓝光解析与弹幕双擎直连",
+  "updatedAt": "2026-11-05",
+  "changelog": [
+    "2.1.0: 接入弹幕 Weeblify 免鉴权镜像与 M3U8 Master 码率自动最高画质感知",
+    "2.0.0: 重构多线路嗅探引擎"
+  ]
+}

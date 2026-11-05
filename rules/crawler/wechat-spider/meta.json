@@ -1,0 +1,12 @@
+{
+  "name": "微信公众号免密文章采集器",
+  "category": "crawler",
+  "author": "DeepCloud",
+  "version": "1.2.0",
+  "description": "基于 FlowEngine DAG 的高抗封微信公众号历史文章与图片无损归档规范",
+  "updatedAt": "2026-11-05",
+  "changelog": [
+    "1.2.0: 引入 Scrapling 自愈选择器算法",
+    "1.0.0: 基础发布"
+  ]
+}
