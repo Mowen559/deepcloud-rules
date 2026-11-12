@@ -55,7 +55,7 @@ function buildIndex() {
       const id = `${cat.name}:${slug}`;
       const title = ruleData.title || ruleData.name || slug;
       const author = ruleData.author || metaData.author || '社区贡献';
-      const version = String(ruleData.version || metaData.version || '1.0.0');
+      const version = String(ruleData.version ?? metaData.version ?? '1.0.0');
       const description = metaData.description || ruleData.find_rule ? `海阔视界 ${title} 规则` : 'DeepCloud 社区规则';
 
       const ruleItem = {
