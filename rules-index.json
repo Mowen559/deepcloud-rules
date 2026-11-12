@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "total": 1,
-  "updatedAt": "2026-11-06T09:23:45.820Z",
+  "total": 3,
+  "updatedAt": "2026-11-12T10:22:42.393Z",
   "rules": [
     {
       "id": "video:dmghk",
@@ -15,6 +15,35 @@
       "assetKind": "hiker_rule",
       "ruleUrl": "https://fastly.jsdelivr.net/gh/Mowen559/deepcloud-rules@main/rules/video/dmghk/rule.json",
       "updatedAt": "2026-11-06",
+      "installStatus": "available"
+    },
+    {
+      "id": "video:fengye-cinema",
+      "name": "枫叶影院",
+      "title": "枫叶影院",
+      "author": "WorkBuddy",
+      "version": "202611136",
+      "category": "video",
+      "description": "海阔视界 枫叶影院 规则",
+      "sourceType": "community",
+      "assetKind": "hiker_rule",
+      "ruleUrl": "https://fastly.jsdelivr.net/gh/Mowen559/deepcloud-rules@main/rules/video/fengye-cinema/rule.json",
+      "updatedAt": "2026-11-12",
+      "installStatus": "available"
+    },
+    {
+      "id": "video:t9-cinema",
+      "name": "T9影院",
+      "title": "T9影院",
+      "author": "WorkBuddy",
+      "version": "202611121",
+      "category": "video",
+      "description": "海阔视界 T9影院 规则",
+      "icon": "https://www.hello8oo6shuf.com/favicon.ico",
+      "sourceType": "community",
+      "assetKind": "hiker_rule",
+      "ruleUrl": "https://fastly.jsdelivr.net/gh/Mowen559/deepcloud-rules@main/rules/video/t9-cinema/rule.json",
+      "updatedAt": "2026-11-12",
       "installStatus": "available"
     }
   ]
