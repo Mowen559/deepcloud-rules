@@ -23,7 +23,8 @@ const DANGEROUS_PATTERNS = [
   /(?:127\.0\.0\.1|localhost|192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.(?:1[6-9]|2\d|3[01])\.\d+\.\d+)/i,
   /require\s*\(\s*['"]child_process['"]\s*\)/i,
   /process\.exit/i,
-  /\bexec\s*\(/i,
+  /\bexecSync\s*\(/i,
+  /(?<!\.)\bexec\s*\(/i,
 ];
 
 function scanRules() {
@@ -89,7 +90,7 @@ function scanRules() {
           slug,
           title,
           author: ruleData.author || '社区贡献',
-          version: ruleData.version || '1.0.0',
+          version: ruleData.version ?? '1.0.0',
         });
       }
     }
