@@ -1,0 +1,89 @@
+{
+  "$schema": "./vault.schema.json",
+  "version": "1.0.0",
+  "updatedAt": "2026-11-12",
+  "description": "DeepCloud 官方规则仓库集中密钥与安全凭据库 (Key Vault)",
+  "evalPrivateJS": {
+    "description": "海阔视界移动端 evalPrivateJS 规则保护壳通用解密密钥池 (按优先级轮询匹配)",
+    "keys": [
+      "hk6666666109",
+      "1234567890kkkk",
+      "Juyue",
+      "SrcJu",
+      "Juying2",
+      "Jujiexi",
+      "Jujiexi2",
+      "findItems",
+      "expandSearch",
+      "1234567890123456",
+      "fysys",
+      "hikerview",
+      "HikerView",
+      "daozhang",
+      "DaoZhang",
+      "haijiao",
+      "yfree",
+      "dy2020",
+      "hdy",
+      "hiker",
+      "hiker666",
+      "hiker888",
+      "csdown",
+      "1234567890",
+      "123456",
+      "88888888",
+      "66666666",
+      "0000000000000000"
+    ]
+  },
+  "services": {
+    "guazi": {
+      "name": "瓜子影视 (csdown 系列)",
+      "author": "流苏",
+      "category": "video",
+      "description": "瓜子影视及 csdown 通用加解密套件凭据",
+      "algorithm": "AES-128-CBC",
+      "credentials": {
+        "aesKey": "KANGEQIU@8868!~.",
+        "aesIv": "0200010900030207",
+        "clientVersion": "3.0.3.2"
+      },
+      "apiPool": [
+        "https://api.36kzbh85.com",
+        "https://api.5udaneqy.com",
+        "https://api.cpcsfgyp.com",
+        "https://api.5h5hbfhh.com",
+        "https://api.tkfupxqu.com",
+        "https://api.qchyzkww.com",
+        "https://api.w32z7vtd.com"
+      ],
+      "discoveryEndpoint": "/gz/initialize/getApiUrlList?parameter=key"
+    },
+    "dmghg": {
+      "name": "动漫共和国概念版网关",
+      "author": "DeepCloud",
+      "category": "video",
+      "description": "动漫共和国桌面概念版私有网关签名与直连专线凭据",
+      "algorithm": "AES-128-CBC",
+      "credentials": {
+        "appId": "4150439554430627",
+        "system": "3",
+        "version": "1.0.0",
+        "aesKey": "ziISjqkXPsGUMRNGyWigxDGtJbfTdcGvWonrnVkxeIxDcFbv"
+      },
+      "gateways": {
+        "apiHost": "http://bkbfdm.cenmo.fun",
+        "parseHost": "http://jxbfdm.cenmo.fun",
+        "fallbacks": [
+          "http://bkbf.xn--vhqr42drhf5k7b.com",
+          "http://tx.xn--vhqr42drhf5k7b.com",
+          "http://139.199.159.222:7862"
+        ]
+      },
+      "danmaku": {
+        "provider": "weeblify",
+        "endpoint": "https://api.danmaku.weeblify.app/ddp/v1"
+      }
+    }
+  }
+}
