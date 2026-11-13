@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "isRule": true,
+  "sourceType": "import_command",
+  "type": "rule_interface",
+  "title": "海阔视界云简搜索引擎 (128条)",
+  "targetRule": "云盘君.简",
+  "importCode": "$.require('import?rule='+\"云盘君.简\")(input)",
+  "rawInput": "海阔视界云简搜索引擎，共「128」条，复制整条口令打开软件就会自动导入$云5oooole/tht5$b",
+  "fullText": "海阔视界云简搜索引擎，共「128」条，复制整条口令打开软件就会自动导入$云5oooole/tht5$b@import=js:$.require('import?rule='+\"云盘君.简\")(input)",
+  "isTargetRuleInstalled": true,
+  "actualTargetRule": "云盘君.简"
+}
