@@ -1,8 +1,22 @@
 {
   "version": "1.0.0",
-  "total": 3,
-  "updatedAt": "2026-11-13T02:55:20.804Z",
+  "total": 4,
+  "updatedAt": "2026-11-13T08:17:36.671Z",
   "rules": [
+    {
+      "id": "comic:rule-0-ai",
+      "name": "全看网",
+      "title": "全看网",
+      "author": "0℃AI",
+      "version": "0",
+      "category": "comic",
+      "description": "海阔视界 全看网 规则",
+      "sourceType": "community",
+      "assetKind": "hiker_rule",
+      "ruleUrl": "https://fastly.jsdelivr.net/gh/Mowen559/deepcloud-rules@main/rules/comic/rule-0-ai/rule.json",
+      "updatedAt": "2026-11-13",
+      "installStatus": "available"
+    },
     {
       "id": "video:dmghk",
       "name": "动漫共和国",
