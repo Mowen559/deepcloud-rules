@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "total": 3,
-  "updatedAt": "2026-11-12T12:36:09.208Z",
+  "updatedAt": "2026-11-13T02:55:20.804Z",
   "rules": [
     {
       "id": "video:dmghk",
@@ -22,7 +22,7 @@
       "name": "枫叶影院",
       "title": "枫叶影院",
       "author": "WorkBuddy",
-      "version": "202611136",
+      "version": "v202611137",
       "category": "video",
       "description": "海阔视界 枫叶影院 规则",
       "sourceType": "community",
