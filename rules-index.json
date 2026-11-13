@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "total": 6,
-  "updatedAt": "2026-11-13T08:47:42.844Z",
+  "total": 7,
+  "updatedAt": "2026-11-13T09:24:38.728Z",
   "rules": [
     {
       "id": "comic:rule-0-ai",
@@ -28,6 +28,20 @@
       "sourceType": "community",
       "assetKind": "hiker_rule",
       "ruleUrl": "https://fastly.jsdelivr.net/gh/Mowen559/deepcloud-rules@main/rules/comic/rule-loydgik/rule.json",
+      "updatedAt": "2026-11-13",
+      "installStatus": "available"
+    },
+    {
+      "id": "video:128-author",
+      "name": "海阔视界云简搜索引擎 (128条)",
+      "title": "海阔视界云简搜索引擎 (128条)",
+      "author": "社区作者",
+      "version": "1.0.0",
+      "category": "video",
+      "description": "海阔视界 海阔视界云简搜索引擎 (128条) 规则",
+      "sourceType": "community",
+      "assetKind": "hiker_rule",
+      "ruleUrl": "https://fastly.jsdelivr.net/gh/Mowen559/deepcloud-rules@main/rules/video/128-author/rule.json",
       "updatedAt": "2026-11-13",
       "installStatus": "available"
     },
