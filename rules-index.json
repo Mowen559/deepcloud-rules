@@ -1,8 +1,22 @@
 {
   "version": "1.0.0",
-  "total": 7,
-  "updatedAt": "2026-11-13T12:42:39.669Z",
+  "total": 8,
+  "updatedAt": "2026-11-14T16:53:13.919Z",
   "rules": [
+    {
+      "id": "audio:rule-author",
+      "name": "生活需要音乐",
+      "title": "生活需要音乐",
+      "author": "社区作者",
+      "version": "0",
+      "category": "audio",
+      "description": "海阔视界 生活需要音乐 规则",
+      "sourceType": "community",
+      "assetKind": "hiker_rule",
+      "ruleUrl": "https://fastly.jsdelivr.net/gh/Mowen559/deepcloud-rules@main/rules/audio/rule-author/rule.json",
+      "updatedAt": "2026-11-14",
+      "installStatus": "available"
+    },
     {
       "id": "comic:rule-0-ai",
       "name": "全看网",
