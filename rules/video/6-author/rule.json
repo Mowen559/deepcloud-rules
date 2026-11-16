@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "isRule": true,
+  "sourceType": "import_command",
+  "type": "rule_interface",
+  "title": "爱瓜影视(云6)",
+  "targetRule": "聚阅",
+  "importCode": "$.require(\"hiker://page/import?rule=聚阅\");",
+  "rawInput": "云口令：聚阅接口￥XdfGQdw+1AZe6ajgwIxRJblJrx/yUzhrRFo5KkmoLDEKPhSt3TDr396km6jePPRg￥爱瓜影视(云6)",
+  "fullText": "云口令：聚阅接口￥XdfGQdw+1AZe6ajgwIxRJblJrx/yUzhrRFo5KkmoLDEKPhSt3TDr396km6jePPRg￥爱瓜影视(云6)@import=js:$.require(\"hiker://page/import?rule=聚阅\");",
+  "isTargetRuleInstalled": true,
+  "actualTargetRule": "聚阅"
+}
