@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "total": 9,
-  "updatedAt": "2026-11-14T16:53:39.492Z",
+  "total": 10,
+  "updatedAt": "2026-11-16T09:25:16.717Z",
   "rules": [
     {
       "id": "audio:rule-author",
@@ -57,6 +57,20 @@
       "assetKind": "hiker_rule",
       "ruleUrl": "https://fastly.jsdelivr.net/gh/Mowen559/deepcloud-rules@main/rules/comic/rule-loydgik/rule.json",
       "updatedAt": "2026-11-13",
+      "installStatus": "available"
+    },
+    {
+      "id": "comic:rule-xiao",
+      "name": "毒舌电影",
+      "title": "毒舌电影",
+      "author": "xiao",
+      "version": "1",
+      "category": "comic",
+      "description": "海阔视界 毒舌电影 规则",
+      "sourceType": "community",
+      "assetKind": "hiker_rule",
+      "ruleUrl": "https://fastly.jsdelivr.net/gh/Mowen559/deepcloud-rules@main/rules/comic/rule-xiao/rule.json",
+      "updatedAt": "2026-11-14",
       "installStatus": "available"
     },
     {
