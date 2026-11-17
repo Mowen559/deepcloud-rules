@@ -1,8 +1,8 @@
 {
   "title": "毒舌电影",
   "author": "xiao",
-  "version": "1",
+  "version": "2",
   "category": "comic",
-  "description": "初次提交",
-  "updatedAt": "2026-11-14"
+  "description": "修复 cdndefend 动态求解与网络自愈管道",
+  "updatedAt": "2026-11-17"
 }
