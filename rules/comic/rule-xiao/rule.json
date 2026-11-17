@@ -1,6 +1,7 @@
 {
   "title": "毒舌电影",
   "author": "xiao",
+  "version": 2,
   "url": "hiker://empty#page=fypage#",
   "find_rule": "js:\ntry {\n  $.require(\"ds\").dispatch();\n} catch (e) {\n  setResult([{\n    title: \"⚠ 引擎异常\",\n    desc: String(e.message || e),\n    col_type: \"text_1\",\n    url: \"hiker://empty\"\n  }, {\n    title: \"🔄 重新加载\",\n    col_type: \"text_center_1\",\n    url: $(\"hiker://empty#noLoading#\").lazyRule(function () { putMyVar(\"ds_view\", \"home\"); refreshPage(true); return \"hiker://empty\"; })\n  }]);\n}\n",
   "search_url": "hiker://empty?kw=**",
